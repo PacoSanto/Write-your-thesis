@@ -1,0 +1,165 @@
+% ============================================================
+% USEFUL LaTeX COMMANDS — quick reference for thesis writing
+% ============================================================
+% Copy and paste these snippets directly into your chapter files.
+% All commands assume the packages in package_thesis.tex are loaded.
+% ============================================================
+
+
+% --- SECTIONS AND SUBSECTIONS ---
+\section{Section Title}
+\subsection{Subsection Title}
+\subsubsection{Subsubsection Title}
+
+
+% --- CITATIONS ---
+% See COME_CITARE.txt for the full citation command reference.
+\cite{label}
+
+
+% --- ITALIC TEXT ---
+\textit{Italic text here}
+
+
+% --- FIGURE (single image) ---
+% Place the image file in the Figures/ folder.
+% Adjust scale= or use width=0.8\linewidth for relative sizing.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\linewidth]{FILENAME.jpg}
+    \caption{Figure caption text here.}
+    \label{fig:LABEL}
+\end{figure}
+
+% Cross-reference a figure in the text:
+\figref{LABEL}          % produces "Fig. X" (via refstyle)
+% or the standard LaTeX way:
+Figure~\ref{fig:LABEL}
+
+
+% --- SUBFIGURES ---
+% Requires \usepackage{subfig} (included in package_thesis.tex).
+\begin{figure}[htbp]
+    \centering
+    \subfloat[Caption for (a).]{\includegraphics[width=0.45\linewidth]{FILEA.jpg}\label{fig:a}}
+    \hfill
+    \subfloat[Caption for (b).]{\includegraphics[width=0.45\linewidth]{FILEB.jpg}\label{fig:b}}
+    \caption{Overall figure caption.}
+    \label{fig:LABEL}
+\end{figure}
+
+
+% --- NUMBERED LIST ---
+\begin{enumerate}
+    \item First item.
+    \item Second item.
+\end{enumerate}
+
+
+% --- BULLETED LIST ---
+\begin{itemize}
+    \item First bullet.
+    \item Second bullet.
+\end{itemize}
+
+
+% --- EQUATION (numbered) ---
+\begin{equation}
+    E = mc^2
+    \label{eq:LABEL}
+\end{equation}
+
+% Equation WITHOUT a number:
+\begin{equation}
+    \notag
+    E = mc^2
+\end{equation}
+
+% Inline equation:
+The energy is given by $E = mc^2$.
+
+
+% --- CHEMICAL FORMULAS ---
+% Simple formula with \ch{} (chemformula package):
+\ch{H2O}
+\ch{Fe2O3}
+\ch{CaCO3}
+
+% More complex formulas with \ce{} (mhchem package):
+\ce{2H2 + O2 -> 2H2O}
+\ce{^{238}_{92}U}
+
+% Custom abbreviation defined in package_thesis.tex:
+\TiOTwo     % renders as TiO_2
+
+
+% --- UNITS ---
+% Use siunitx for consistent unit formatting:
+\SI{10}{\micro\metre}          % 10 µm
+\SI{3.5}{\gram\per\centi\metre\cubed}  % 3.5 g/cm³
+\ang{45}                        % 45°
+\num{1.5e-3}                    % 1.5 × 10⁻³
+
+
+% --- TABLE ---
+\begin{table}[htbp]
+    \centering
+    \caption{Table caption (above the table by convention).}
+    \label{tab:LABEL}
+    \begin{tabular}{lcc}
+        \toprule
+        Sample  & Value A & Value B \\
+        \midrule
+        Sample 1 & 12.3   & 45.6   \\
+        Sample 2 & 78.9   & 01.2   \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+% Cross-reference a table:
+Table~\ref{tab:LABEL}
+
+
+% --- LANDSCAPE TABLE (full page) ---
+% Uses the \landscapetable command defined in package_thesis.tex.
+\landscapetable{%
+    \begin{tabular}{lcc}
+        \toprule
+        Column 1 & Column 2 & Column 3 \\
+        \midrule
+        A & B & C \\
+        \bottomrule
+    \end{tabular}%
+}{Caption for the landscape table.}
+
+
+% --- CROSS-REFERENCES ---
+% Label chapters, sections, figures, tables, and equations with \label{},
+% then reference them anywhere with \ref{} or \pageref{}.
+
+% Example:
+\chapter{Introduction}\label{chapter:intro}
+
+% In another chapter:
+For further details, see Chapter~\ref{chapter:intro} (p.~\pageref{chapter:intro}).
+
+
+% --- EPIGRAPH (opening quotation for a chapter) ---
+\epigraph{%
+    The quality of the imagination is to flow and not to freeze.%
+}{Ralph Waldo Emerson}
+
+
+% --- ABSTRACT ENVIRONMENT ---
+\begin{abstract}
+    This thesis investigates...
+\end{abstract}
+
+
+% --- STYLED PARAGRAPH TITLE ---
+% Produces a heading framed by horizontal rules.
+\styledtitle{Analytical Methods}
+
+
+% --- DUMMY TEXT (for layout testing only — remove before submission) ---
+\lipsum[1-2]

@@ -1,0 +1,116 @@
+\documentclass[b5paper,11pt,twoside,hidelinks]{book}
+
+% ============================================================
+% PREAMBLE: Load all packages and custom settings
+% The package file contains all \usepackage{} declarations,
+% custom commands, bibliography setup, and page layout.
+% ============================================================
+\input{Other_Package/package_thesis}
+
+% Roman numerals for front matter (i, ii, iii, ...)
+\pagenumbering{roman}
+
+\begin{document}
+
+% ------------------------------------------------------------
+% COVER PAGE
+% Uncomment the lines below to include a PDF cover page.
+% The \cleardoublepage ensures the next content starts on
+% a right-hand (odd) page, as required for book layout.
+% ------------------------------------------------------------
+%\includepdf[pages=1,fitpaper=false,width=\paperwidth,height=\paperheight]{Figures/Covers/coversfinal_Front.pdf}
+%\cleardoublepage
+
+% ============================================================
+% FRONT MATTER
+% Includes title page, abstract, and table of contents.
+% \frontmatter disables chapter numbering and uses roman
+% page numbering.
+% ============================================================
+\frontmatter
+
+% --- Title page for draft/revision ---
+% Replace with \input{Frontespizio} for the final version.
+\author{Author Name \\ Master's / PhD Student \\ University Name}
+\title{%
+    Draft PhD/Master's Thesis \\
+    \textbf{Full Thesis Title Here} \\
+    \small Last updated: \today
+}
+\maketitle
+
+% --- Abstract ---
+% Uncomment and provide the appropriate chapter file.
+%\chapter*{Abstract}
+%\input{chapters/Abstract}
+
+% --- Abstract in a second language (e.g., Spanish) ---
+%\chapter*{Resumen}
+%\input{chapters/AResumen}
+
+% --- Table of Contents ---
+\tableofcontents
+
+% ============================================================
+% MAIN MATTER
+% Arabic page numbering begins here.
+% Each chapter is stored in a separate file inside chapters/.
+% ============================================================
+\mainmatter
+\pagenumbering{arabic}
+
+% --- Chapter 1: Introduction ---
+\chapter{Introduction}\label{chapter:Intro}
+\input{chapters/CAP1}
+
+% --- Chapter 2: Research Goals ---
+\chapter{Research Goals}\label{chapter:RG}
+\input{chapters/CAP2}
+
+% --- Chapter 3: Materials and Methods ---
+\chapter{Materials and Methods}\label{chapter:MeM}
+\input{chapters/CAP3}
+
+% --- Results chapters ---
+% Add or rename as needed for your thesis structure.
+\chapter{Part 1}\label{chapter:P1}
+\input{chapters/CAP4}
+
+\chapter{Part 2}\label{chapter:P2}
+\input{chapters/CAP5}
+
+\chapter{Part 3}\label{chapter:P3}
+\input{chapters/CAP6}
+
+% --- General Discussion ---
+\chapter{General Discussion}\label{chapter:DiscFin}
+\input{chapters/CAP7}
+
+% --- Conclusions ---
+% The asterisk (*) removes the chapter number from the title.
+\chapter*{Conclusions and Future Perspectives}\label{chapter:Con}
+\input{chapters/CAP8}
+
+% ============================================================
+% APPENDICES (optional)
+% Uncomment to include appendices after the main text.
+% ============================================================
+%\appendix
+%\chapter{Appendix A}\label{appendix:A}
+%\input{chapters/Appendix}
+
+% ============================================================
+% LISTS OF FIGURES AND TABLES (optional)
+% Useful for the final submission version.
+% ============================================================
+%\listoffigures
+%\listoftables
+
+% ============================================================
+% BIBLIOGRAPHY
+% Printed using biblatex/biber (see package_thesis for setup).
+% Compile order: LuaLaTeX -> Biber -> LuaLaTeX -> LuaLaTeX
+% ============================================================
+\printbibliography[title={References}]
+
+\end{document}

@@ -1,0 +1,293 @@
+% ============================================================
+% PACKAGE FILE — package_thesis.tex
+% This file centralises all package loading, layout settings,
+% custom commands, and bibliography configuration.
+% Include it in your main file with: \input{Other_Package/package_thesis}
+%
+% COMPILATION ORDER:
+%   LuaLaTeX -> Biber -> LuaLaTeX -> LuaLaTeX
+% ============================================================
+
+
+% ============================================================
+% 1. SPACING AND SECTION TITLE FORMATTING
+% ============================================================
+
+\usepackage{setspace}    % Controls line spacing
+\usepackage{titlesec}    % Customises section/chapter title layout
+
+\singlespacing           % Default: single spacing
+%\onehalfspacing         % Uncomment for 1.5 line spacing
+
+% Vertical space before and after headings:
+%   \titlespacing*{<level>}{<left>}{<before>}{<after>}
+\titlespacing*{\chapter}     {0pt}{20pt}{8pt}
+\titlespacing*{\section}     {0pt}{13pt}{4pt}
+\titlespacing*{\subsection}  {0pt}{8pt} {2pt}
+\titlespacing*{\subsubsection}{0pt}{4pt}{1pt}
+\titlespacing*{\paragraph}   {0pt}{2pt} {1pt}
+
+% Chapter title style: large bold, chapter number followed by title
+\titleformat{\chapter}[hang]
+  {\normalfont\huge\bfseries}{\thechapter}{13pt}{\Huge}
+
+
+% ============================================================
+% 2. FONT AND LANGUAGE SETTINGS
+% ============================================================
+
+\usepackage[LGR,T1]{fontenc}   % T1 encoding (supports Western European + Greek)
+\usepackage[utf8]{inputenc}     % UTF-8 input (accented letters, special chars)
+
+% Page geometry — matches B5 paper with binding offset for two-sided printing
+\usepackage[b5paper,
+            top=2cm, bottom=1.6cm,
+            left=2.5cm, right=2cm,
+            heightrounded,
+            bindingoffset=4mm,
+            twoside]{geometry}
+
+% Language support — last language in list is the document default
+% Add or remove languages as needed
+\usepackage[italian,greek,spanish,english]{babel}
+
+
+% ============================================================
+% 3. PAGE LAYOUT: HEADERS AND FOOTERS
+% ============================================================
+
+\usepackage{fancyhdr}        % Custom headers and footers
+\fancyhf{}                   % Clear all defaults
+
+% Odd pages (right-hand): section name on the left
+\fancyhead[LO]{\nouppercase{\rightmark}}
+% Even pages (left-hand): chapter name in italics on the right
+\fancyhead[RE]{\textit{\nouppercase{\leftmark}}}
+% Centred page number in the footer
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}  % Thin rule under header
+\renewcommand{\footrulewidth}{0pt}    % No rule above footer
+\pagestyle{fancy}
+
+
+% ============================================================
+% 4. MATHEMATICS AND CHEMISTRY
+% ============================================================
+
+% Core maths packages — safe to keep even if not all are used
+\usepackage{amsmath}         % Extended maths environments
+\usepackage{amssymb}         % Additional maths symbols
+\usepackage{mathtools}       % Extends amsmath (e.g. \coloneqq)
+\usepackage{gensymb}         % General symbols: \degree, \celsius, etc.
+
+% Chemistry
+\usepackage{chemformula}     % Simple chemical formulas: \ch{H2O}
+\usepackage[version=4]{mhchem} % More complex formulas: \ce{Fe2O3}
+\usepackage{chemfig}         % Structural chemical diagrams
+
+% Unit formatting
+\usepackage{siunitx}         % \SI{10}{\micro\metre}, \ang{45}, etc.
+
+% Maths font (sans-serif style for figures/slides — remove if unwanted)
+\usepackage{newtxsf}
+
+% Plotting with pgfplots (e.g. in-document graphs)
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+
+% ============================================================
+% 5. FIGURES, TABLES, AND FLOATS
+% ============================================================
+
+\usepackage{graphicx}        % \includegraphics
+\graphicspath{{Figures/}}    % Default search path for images
+
+\usepackage{float}           % [H] placement for figures/tables
+\usepackage{wrapfig}         % Text wrapped around figures
+\usepackage{subfig}          % Subfigures: (a), (b), etc.
+\usepackage{caption}         % Customise caption style
+\usepackage{capt-of}         % Captions outside float environments
+\usepackage{afterpage}       % Insert full-page floats with \afterpage{}
+
+\usepackage{booktabs}        % Professional table rules (\toprule, \midrule, \bottomrule)
+\usepackage{tabularx}        % Tables with auto-width columns (X column type)
+\usepackage{longtable}       % Tables spanning multiple pages
+\usepackage{array}           % Advanced column formatting in tables
+\usepackage{multirow}        % Merge rows in tables
+\usepackage{makecell}        % Line breaks inside table cells
+\usepackage{colortbl}        % Coloured table cells/rows
+\usepackage{lscape}          % Rotate content to landscape (page stays portrait)
+\usepackage{pdflscape}       % Rotate entire page to landscape in PDF
+\usepackage{rotating}        % Rotate tables or figures
+
+
+% ============================================================
+% 6. TEXT, LAYOUT, AND TYPOGRAPHY
+% ============================================================
+
+\usepackage{microtype}       % Improves line breaking and spacing
+\usepackage{indentfirst}     % Indent first paragraph of each section
+\setlength{\parindent}{1em}  % Paragraph indentation width
+
+\usepackage{ragged2e}        % Better text alignment (\RaggedRight, etc.)
+\usepackage{multicol}        % Multi-column layout
+\usepackage{changepage}      % Adjust margins locally
+
+\usepackage{epigraph}        % Quotations at chapter openings
+\setlength{\epigraphwidth}{0.6\textwidth}
+
+\usepackage{xcolor}          % Custom colours: \definecolor, \textcolor
+\usepackage{url}             % Typeset URLs correctly
+\usepackage{newunicodechar}  % Map Unicode characters to LaTeX commands
+%\newunicodechar{−}{-}       % Example: map Unicode minus to hyphen
+
+\usepackage{textcomp}        % Extra text symbols (e.g. \textsuperscript)
+\usepackage{lipsum}          % Dummy text for layout testing: \lipsum[1-3]
+
+
+% ============================================================
+% 7. CODE LISTINGS
+% ============================================================
+
+\usepackage{listings}        % Source code with syntax highlighting
+\usepackage{matlab-prettifier} % MATLAB-specific highlighting
+
+
+% ============================================================
+% 8. CROSS-REFERENCING AND NAVIGATION
+% ============================================================
+
+\usepackage{refstyle}        % Custom cross-reference formats (\figref, \tabref)
+\usepackage{bookmark}        % PDF bookmarks for navigation
+\usepackage{pdfpages}        % Insert external PDF pages
+
+% Hyperlink configuration (already loaded via \documentclass[hidelinks])
+\hypersetup{
+    colorlinks = true,
+    linkcolor  = black,   % Internal links (TOC, \ref)
+    citecolor  = cyan     % Citation links
+}
+
+
+% ============================================================
+% 9. LISTS
+% ============================================================
+
+\usepackage{enumitem}        % Fine-grained control over list spacing
+
+% Remove extra vertical space in lists
+\setlist[itemize] {noitemsep, topsep=0pt}
+\setlist[enumerate]{topsep=0pt}
+
+
+% ============================================================
+% 10. BIBLIOGRAPHY
+% ============================================================
+% Backend: Biber (recommended over BibTeX for full Unicode support)
+% Style: numeric-comp — compressed numeric citations [1–3]
+% Other common styles: authoryear, alphabetic, apa
+%
+% To use author-year style instead, replace:
+%   style=numeric-comp  ->  style=authoryear
+% and recompile with Biber.
+% ============================================================
+
+\usepackage{csquotes}  % Required by biblatex for correct quotation marks
+\usepackage[backend    = biber,
+            style      = numeric-comp,
+            giveninits = true,
+            url        = false,
+            doi        = true,
+            eprint     = false,
+            natbib     = true,
+            sorting    = none]{biblatex}
+
+\addbibresource{references.bib}  % Point to your .bib file
+
+% Clean up bibliography entries: suppress urldate, url, note, language
+\DeclareFieldFormat{urldate}{}
+\AtEveryBibitem{
+    \clearfield{note}
+    \clearfield{urldate}
+    \clearfield{url}
+    \clearlist{language}
+}
+
+
+% ============================================================
+% 11. CUSTOM COMMANDS AND ABBREVIATIONS
+% ============================================================
+
+% --- Accented uppercase letters (for all-caps contexts) ---
+\newcommand*{\egrave}{\MakeUppercase{è}{\space}}
+\newcommand*{\eacuta}{\MakeUppercase{é}{\space}}
+\newcommand*{\ograve}{\MakeUppercase{ò}{\space}}
+\newcommand*{\agrave}{\MakeUppercase{à}{\space}}
+\newcommand*{\igrave}{\MakeUppercase{ì}{\space}}
+\newcommand*{\ugrave}{\MakeUppercase{ù}{\space}}
+
+% --- Shorthand commands ---
+\newcommand*{\cors}{\textit}   % Alias for \textit (italic)
+\newcommand*{\sen}{\sin}       % Spanish/Italian: \sen for sine
+
+% --- Custom caption style (small italic) ---
+% Usage: place \mycaption before the figure/table environment
+\newcommand{\mycaption}{\captionsetup{font={small,it}}}
+
+% --- Chemical abbreviations ---
+% Add frequently used compound names here to ensure consistent formatting
+\newcommand*{\TiOTwo}{TiO$_2$}
+%\newcommand*{\FeOThree}{Fe$_2$O$_3$}   % Example for geochemistry
+
+% --- Styled paragraph title (boxed with horizontal rules) ---
+% Usage: \styledtitle{Paragraph heading}
+\newcommand{\styledtitle}[1]{%
+    \noindent\hrulefill\\[2pt]%
+    \par\noindent\hspace*{1cm}\textbf{#1}\par\nobreak%
+    \noindent\hrulefill%
+}
+
+% --- Landscape page with a centred table ---
+% Usage: \landscapetable{<table code>}{<caption text>}
+\newcommand{\landscapetable}[2]{%
+    \begin{landscape}
+        \thispagestyle{empty}
+        \begin{center}
+            \vspace*{\fill}
+            \captionof{table}{#2}
+            #1
+            \vspace*{\fill}
+        \end{center}
+    \end{landscape}
+}
+
+
+% ============================================================
+% 12. ABSTRACT ENVIRONMENT (decorative)
+% ============================================================
+% Provides a typographically styled abstract block.
+% Usage:
+%   \begin{abstract}
+%     Text of the abstract...
+%   \end{abstract}
+% ============================================================
+
+\usepackage{fourier-orns}  % Decorative ornaments (\decofourleft, \decofourright)
+
+\newenvironment{abstract}{%
+    \begin{center}
+        \vspace{0.6cm}
+        \decofourleft\quad{\Large\scshape Abstract}\quad\decofourright
+    \end{center}
+    \vspace{0.3cm}
+    \begin{quotation}
+        \small\noindent
+}{%
+    \end{quotation}
+    \vspace{0.5cm}
+}
+
+% Suppress the automatic date on the title page
+%\date{}

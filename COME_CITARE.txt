@@ -1,0 +1,100 @@
+% ============================================================
+% CITATION GUIDE — COME_CITARE.txt
+% Quick reference for all citation commands in this template.
+%
+% This template uses biblatex with backend=biber and
+% style=numeric-comp (compressed numeric citations, e.g. [1–3]).
+%
+% To switch to author-year style (e.g. Eco, 1977), change
+% style=numeric-comp to style=authoryear in package_thesis.tex
+% and recompile: LuaLaTeX -> Biber -> LuaLaTeX -> LuaLaTeX
+% ============================================================
+
+
+% ============================================================
+% BASIC CITATION COMMANDS
+% ============================================================
+
+\cite{key}                  % Standard citation:            [1]  or  Eco, 1977
+\cite{key1,key2,key3}       % Multiple citations at once:   [1–3]
+\parencite{key}             % Citation in parentheses:      (Eco, 1977)
+\parencite{key1,key2}       % Useful for groups of refs:    (Eco, 1977; Smith, 2005)
+\textcite{key}              % Author as subject of sentence: Eco (1977)
+
+
+% ============================================================
+% AUTHOR AND YEAR ONLY
+% ============================================================
+
+\citeauthor{key}            % Author name only:     Eco
+\citeyear{key}              % Year only:            1977
+
+
+% ============================================================
+% CITATIONS WITH PAGE NUMBERS OR PREFIXES
+% ============================================================
+
+\cite[p.~5]{key}            % With page:            Eco, 1977, p. 5
+\cite[pp.~5--9]{key}        % With page range:      Eco, 1977, pp. 5–9
+\cite[see][]{key}           % With prefix only:     see Eco, 1977
+\cite[see][p.~5]{key}       % With prefix + page:   see Eco, 1977, p. 5
+
+
+% ============================================================
+% CROSS-REFERENCING CHAPTERS, SECTIONS, FIGURES, TABLES
+% ============================================================
+
+% Always assign a \label{} immediately after \chapter, \section,
+% \begin{figure}, \begin{table}, or \begin{equation}.
+
+% Chapter label (defined in maintext_thesis.tex):
+\chapter{Introduction}\label{chapter:intro}
+\section{Background}\label{sec:background}
+
+% Referencing in the text:
+For further details, see Chapter~\ref{chapter:intro} on p.~\pageref{chapter:intro}.
+As described in Section~\ref{sec:background}...
+See Figure~\ref{fig:LABEL} and Table~\ref{tab:LABEL}.
+Equation~\eqref{eq:LABEL} shows that...
+
+% Tip: always use ~ (non-breaking space) before \ref to avoid
+% line breaks between "Figure" and "3".
+
+
+% ============================================================
+% ADDING REFERENCES TO THE .bib FILE
+% ============================================================
+% Each entry in references.bib follows this structure.
+% The label (e.g. Smith2020) is what you use in \cite{}.
+
+% Journal article:
+@article{Smith2020,
+  author   = {Smith, John and Doe, Jane},
+  title    = {Title of the article},
+  journal  = {Journal of Geology},
+  year     = {2020},
+  volume   = {128},
+  number   = {3},
+  pages    = {450--467},
+  doi      = {10.xxxx/xxxxxx},
+}
+
+% Book:
+@book{Eco1977,
+  author    = {Eco, Umberto},
+  title     = {Come si fa una tesi di laurea},
+  publisher = {Bompiani},
+  year      = {1977},
+  address   = {Milano},
+}
+
+% Book chapter:
+@incollection{Brown2018,
+  author    = {Brown, Alice},
+  title     = {Chapter title},
+  booktitle = {Book Title},
+  editor    = {Editor, Name},
+  publisher = {Publisher},
+  year      = {2018},
+  pages     = {100--120},
+}
