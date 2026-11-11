@@ -5,6 +5,9 @@
 % This template uses biblatex with backend=biber and
 % style=numeric-comp (compressed numeric citations, e.g. [1–3]).
 %
+% The examples below show the author-year output (e.g. Eco, 1977);
+% with the default numeric style the same commands give [1], [2, p. 5], ...
+%
 % To switch to author-year style (e.g. Eco, 1977), change
 % style=numeric-comp to style=authoryear in package_thesis.tex
 % and recompile: LuaLaTeX -> Biber -> LuaLaTeX -> LuaLaTeX

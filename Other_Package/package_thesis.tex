@@ -37,7 +37,8 @@
 % ============================================================
 
 \usepackage[LGR,T1]{fontenc}   % T1 encoding (supports Western European + Greek)
-\usepackage[utf8]{inputenc}     % UTF-8 input (accented letters, special chars)
+% With LuaLaTeX the input is UTF-8 by default, so inputenc is not needed.
+% If you ever compile with pdfLaTeX, add: \usepackage[utf8]{inputenc}
 
 % Page geometry — matches B5 paper with binding offset for two-sided printing
 \usepackage[b5paper,
@@ -58,6 +59,7 @@
 
 \usepackage{fancyhdr}        % Custom headers and footers
 \fancyhf{}                   % Clear all defaults
+\setlength{\headheight}{14pt} % Large enough for the 11pt header (avoids a fancyhdr warning)
 
 % Odd pages (right-hand): section name on the left
 \fancyhead[LO]{\nouppercase{\rightmark}}
@@ -167,7 +169,7 @@
 \hypersetup{
     colorlinks = true,
     linkcolor  = black,   % Internal links (TOC, \ref)
-    citecolor  = cyan     % Citation links
+    citecolor  = cyan     % Citation links (use black for a printed version)
 }
 
 

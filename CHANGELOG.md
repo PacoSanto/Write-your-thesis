@@ -2,6 +2,19 @@
 
 All notable changes to this template will be documented in this file.
 
+## [1.0.1]
+
+### Fixed
+- Conclusions chapter now appears in the table of contents and has the correct running header
+- Removed `inputenc` (not needed with LuaLaTeX) and set `\headheight`, which silenced the compiler warnings
+- Corrected the commented-out include for the second-language abstract (`chapters/Resumen`)
+- The abstract no longer prints its title twice
+- Cheat sheets: `\figref` output and numeric vs author-year examples described correctly
+
+### Added
+- `.gitignore`, `.latexmkrc`, `.vscode/settings.json` and the `Figures/` folders that the README already described
+- README: section on printing the thesis, troubleshooting, A4 and cover instructions
+
 ## [1.0.0] — 2025
 
 ### Initial release

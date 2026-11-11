@@ -1,261 +1,163 @@
-# ✍️ write-your-thesis
+# Write your thesis
 
-> **A clean, well-documented LaTeX template for Master's and PhD theses.**
-> Built from real experience, so you don't have to waste weeks reinventing the wheel.
+A LaTeX template for a Master's or PhD thesis, based on the one I used for my own PhD in Earth Sciences
+at the University of Granada.
 
----
+When I started writing, I lost a lot of time on things that have nothing to do with science: which packages to load,
+how to set the margins for a bound book, why biblatex would not print my references, how to put two photos side by side.
+This repository is the setup I ended up with, cleaned up and commented, so you can skip that part.
+I wrote it with geology and chemistry in mind (minerals, formulas, units, microscope images), but nothing in it is
+specific to one field.
 
-## Why this template?
+It compiles as it is. Clone it, replace the placeholder text, and write.
 
-If you've ever started writing a thesis in LaTeX, you know the pain: hours spent hunting for the right packages, fighting with margins, figuring out how citations work, getting subfigures to behave, and wondering why your table looks terrible. By the time the setup is "done", you've lost days — or weeks — that should have gone into actual writing.
-
-**This template is the starting point I wish I had.** It collects all the configuration, custom commands, and best practices I accumulated during my own thesis work, and organises them into a structure that just works out of the box.
-
-It is designed for students in **Earth Sciences, Geology, Chemistry, Physics**, and related STEM fields, but it is general enough for any discipline. Whether you're writing about geochemistry or quantum mechanics, this gives you a solid foundation.
-
-### What you get
-
-- **A complete, compilable project** — clone it, open it, start writing.
-- **Sensible defaults** — B5 paper, professional headers/footers, clean typography, correct bibliography setup.
-- **All the packages you'll need** — maths, chemistry, units, figures, subfigures, tables, landscape pages, code listings, and more — already loaded and configured.
-- **Two quick-reference cheat sheets** — `Codici_TESTO.txt` (LaTeX commands) and `COME_CITARE.txt` (citation guide) that you can keep open while writing.
-- **Chapter files ready to fill in** — just open and type.
-- **Detailed comments everywhere** — every setting is explained so you can understand *and* customise.
-
----
-
-## 📁 Repository Structure
+## What is in the repository
 
 ```
 write-your-thesis/
-│
-├── maintext_thesis.tex          # Main document — compile this one
-├── references.bib               # Your bibliography entries go here
-│
+├── maintext_thesis.tex        main file: compile this one
+├── references.bib             your bibliography
 ├── Other_Package/
-│   └── package_thesis.tex       # All packages, layout, custom commands
-│
+│   └── package_thesis.tex     packages, page layout, custom commands
 ├── chapters/
-│   ├── Abstract.tex             # Abstract (English)
-│   ├── Resumen.tex              # Abstract (second language, optional)
-│   ├── CAP1.tex                 # Chapter 1 — Introduction
-│   ├── CAP2.tex                 # Chapter 2 — Research Goals
-│   ├── CAP3.tex                 # Chapter 3 — Materials and Methods
-│   ├── CAP4.tex                 # Chapter 4 — Results Part 1
-│   ├── CAP5.tex                 # Chapter 5 — Results Part 2
-│   ├── CAP6.tex                 # Chapter 6 — Results Part 3
-│   ├── CAP7.tex                 # Chapter 7 — General Discussion
-│   ├── CAP8.tex                 # Chapter 8 — Conclusions
-│   └── Appendix.tex             # Appendix (optional)
-│
-├── Figures/
-│   └── Covers/                  # Cover page PDFs (optional)
-│
-├── Codici_TESTO.txt             # Cheat sheet: common LaTeX commands
-├── COME_CITARE.txt              # Cheat sheet: citation commands
-│
-├── .gitignore                   # Ignores LaTeX auxiliary files
-├── .latexmkrc                   # Auto-compilation config for latexmk
-├── LICENSE                      # CC BY 4.0 license
-└── README.md                    # This file
+│   ├── Abstract.tex           abstract
+│   ├── Resumen.tex            abstract in a second language (optional)
+│   ├── CAP1.tex ... CAP8.tex  introduction, goals, methods, three results chapters,
+│   │                          discussion, conclusions
+│   └── Appendix.tex           appendix (optional)
+├── Figures/                   put your images here (Figures/Covers for the cover PDF)
+├── Codici_TESTO.txt           cheat sheet: figures, tables, equations, formulas, units
+├── COME_CITARE.txt            cheat sheet: citations and .bib entries
+├── .latexmkrc                 makes `latexmk` use LuaLaTeX and Biber
+├── .vscode/settings.json      build recipe for VS Code (LaTeX Workshop)
+└── .gitignore
 ```
 
----
+Defaults: B5 paper, two-sided layout with a binding offset, numeric citations ([1-3]), chapters in separate files.
+Loaded and configured: maths, chemistry (`chemformula`, `mhchem`), units (`siunitx`), figures and subfigures,
+`booktabs` tables, landscape pages, code listings, epigraphs. Every setting in `package_thesis.tex` has a comment
+saying what it does.
 
-## 🚀 Getting Started
+The two cheat sheets (`Codici_TESTO.txt`, `COME_CITARE.txt`) are the files I kept open next to the editor while writing.
+The names are in Italian because that is how I saved them; the content is in English.
 
-### Prerequisites
+## Requirements
 
-You need a working LaTeX distribution:
+- A LaTeX distribution: [TeX Live](https://tug.org/texlive/) (Linux, Windows), [MacTeX](https://tug.org/mactex/) (macOS)
+  or [MiKTeX](https://miktex.org/). On Ubuntu/Debian: `sudo apt install texlive-full latexmk biber`.
+- **LuaLaTeX** and **Biber**. Both come with the distributions above.
+- An editor. I used VS Code with the [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+  extension (the build recipe is already in `.vscode/`). [Overleaf](https://www.overleaf.com/) also works.
 
-| OS | Recommended distribution |
-|---|---|
-| **Windows** | [MiKTeX](https://miktex.org/) or [TeX Live](https://tug.org/texlive/) |
-| **macOS** | [MacTeX](https://tug.org/mactex/) |
-| **Linux** | TeX Live (`sudo apt install texlive-full`) |
-
-You also need **Biber** (usually included with the distributions above) for bibliography processing.
-
-**Recommended editor:** [Visual Studio Code](https://code.visualstudio.com/) with the [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) extension, or [Overleaf](https://www.overleaf.com/) for online editing.
-
-### Step 1 — Clone the repository
+## Compile
 
 ```bash
-git clone https://github.com/PacoSanto/write-your-thesis.git
-cd write-your-thesis
-```
-
-Or download the ZIP from the green **Code** button on GitHub.
-
-### Step 2 — Open and customise
-
-1. Open `maintext_thesis.tex` in your editor.
-2. Replace the placeholder author name and title with your own.
-3. Start writing in the chapter files inside `chapters/`.
-4. Add your figures to the `Figures/` folder.
-5. Add your bibliography entries to `references.bib`.
-
-### Step 3 — Compile
-
-The compilation requires **four passes** to resolve all cross-references and bibliography:
-
-```bash
-lualatex  maintext_thesis.tex
-biber     maintext_thesis
-lualatex  maintext_thesis.tex
-lualatex  maintext_thesis.tex
-```
-
-**Or, much easier**, use `latexmk` (included with TeX Live and MacTeX):
-
-```bash
+git clone https://github.com/PacoSanto/Write-your-thesis.git
+cd Write-your-thesis
 latexmk maintext_thesis.tex
 ```
 
-The included `.latexmkrc` file tells `latexmk` to use LuaLaTeX and Biber automatically.
+`latexmk` reads `.latexmkrc`, runs LuaLaTeX and Biber as many times as needed and gives you `maintext_thesis.pdf`.
+To do it by hand:
 
----
-
-## 📝 How to Use This Template
-
-### Writing chapters
-
-Each chapter lives in its own file inside `chapters/`. For example, to write your introduction, open `chapters/CAP1.tex` and start typing:
-
-```latex
-% chapters/CAP1.tex
-This thesis investigates the geochemical properties of...
-
-\section{Background}
-The study area is located in...
-
-\section{State of the Art}
-Previous studies have shown that \cite{Smith2020}...
+```bash
+lualatex maintext_thesis.tex
+biber    maintext_thesis
+lualatex maintext_thesis.tex
+lualatex maintext_thesis.tex
 ```
 
-The chapter heading itself (e.g., `\chapter{Introduction}`) is defined in `maintext_thesis.tex`, not in the chapter file. This keeps things clean and gives you a single place to see the full thesis structure.
+**Overleaf:** upload the folder, then Menu > Compiler > **LuaLaTeX**.
 
-### Adding figures
+## How I use it
 
-1. Place your image files (`.jpg`, `.png`, `.pdf`) in the `Figures/` folder.
-2. Reference them in your chapter:
+**Chapters.** Each chapter is a separate file in `chapters/`. The `\chapter{...}` line lives in `maintext_thesis.tex`,
+not in the chapter file, so you see the whole structure of the thesis in one place. Need fewer chapters? Delete the
+`\chapter` and `\input` lines you do not use. Need more? Add them and create the file.
+
+**Figures.** Put images in `Figures/` and use the file name only:
 
 ```latex
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.75\linewidth]{my_image.jpg}
-    \caption{Description of the figure.}
+    \includegraphics[width=0.75\linewidth]{my_image.png}
+    \caption{What the figure shows.}
     \label{fig:my_image}
 \end{figure}
 ```
 
-See `Codici_TESTO.txt` for more examples (subfigures, landscape figures, etc.).
+Subfigures, landscape tables, chemical formulas and the rest are in `Codici_TESTO.txt`.
 
-### Adding references
+**References.** Export your entries from Zotero, Mendeley or Google Scholar into `references.bib`, then cite with
+`\cite{Key}`. All the commands, with examples, are in `COME_CITARE.txt`.
 
-1. Open `references.bib` and add your entries (or export them from Zotero, Mendeley, Google Scholar, etc.).
-2. Cite in the text with `\cite{label}`.
+**Citation style.** In `package_thesis.tex`, change `style = numeric-comp` to `style = authoryear` and compile again.
 
-See `COME_CITARE.txt` for the full citation command reference.
+**A4 instead of B5.** Change `b5paper` to `a4paper` in two places: the first line of `maintext_thesis.tex` and the
+`geometry` options in `package_thesis.tex`. Then adjust the margins to what your university asks for.
 
-### Switching citation style
+**Cover page.** Put the PDF in `Figures/Covers/` and uncomment the `\includepdf` lines at the top of
+`maintext_thesis.tex`.
 
-The default style is **numeric-comp** (compressed numbers: [1–3]). To switch to **author-year** (e.g., Eco, 1977):
+**Abstract, appendix, lists of figures and tables.** They are in `maintext_thesis.tex`, commented out. Remove the `%`
+to switch them on.
 
-1. Open `Other_Package/package_thesis.tex`.
-2. Find the line `style = numeric-comp`.
-3. Change it to `style = authoryear`.
-4. Recompile with Biber.
+## From the PDF to the printed thesis
 
-### Changing paper size
+Writing the thesis is half of the job; the other half is getting it printed and bound without surprises.
+This is the checklist I followed. Always check your university's rules first: they win over everything below.
 
-The default is **B5** (common for European theses). To switch to **A4**:
+1. **Know your page size.** The template is B5 (176 x 250 mm). You can check it with `pdfinfo maintext_thesis.pdf`.
+   Ask the print shop whether they can print B5. If you print on A4 yourself, choose **actual size (100%)**, never
+   "fit to page": scaling changes the margins and the font size you designed.
+2. **Print double-sided, flip on the long edge.** The layout is `twoside`: odd pages on the right, even on the left,
+   with an extra 4 mm on the inner margin for the binding (`bindingoffset` in `package_thesis.tex`). Increase it if the
+   binding takes more space (spiral, hardcover).
+3. **Blank pages are normal.** `\cleardoublepage` and `\chapter` make every chapter start on a right-hand page, so a
+   blank left page can appear. Do not delete them, they keep the double-sided layout correct.
+4. **Fonts embedded.** Run `pdffonts maintext_thesis.pdf`: every line must say `yes` under *emb*. LuaLaTeX does this
+   by default.
+5. **Figures.** Plots and diagrams as vector PDF when possible. Photos and microscope images at about 300 dpi at the
+   size they have on the page. Lower resolution looks fine on screen and bad on paper.
+6. **Colours.** If you print in black and white, check that your figures are still readable in grayscale. Links in
+   the PDF are coloured (citations are cyan): for the printed version, set `citecolor = black` in the `\hypersetup`
+   of `package_thesis.tex`.
+7. **Final front page.** The draft title page in `maintext_thesis.tex` is a placeholder. Replace it with the official
+   one of your university (as a PDF with `\includepdf`, or as a separate `Frontespizio.tex`).
+8. **Remove the draft material.** Delete `\lipsum` dummy text and `\today` in the title if you do not want a date that
+   changes at every compilation.
+9. **Read the PDF, not the source.** Before sending it to the printer, scroll through the whole PDF once: widows at the
+   bottom of a page, figures that ended up far from their text, overfull lines, references showing as `??`.
+10. **Print a test chapter.** One chapter on paper will show you problems (margins, font size, figure quality) that
+    the screen hides. It is cheaper than reprinting a whole thesis.
+11. **Send the PDF, not the .tex.** Give the print shop the final PDF and, if they ask, the page size and the binding
+    type.
 
-1. In `maintext_thesis.tex`, change `b5paper` to `a4paper`.
-2. In `Other_Package/package_thesis.tex`, change `b5paper` to `a4paper` in the `geometry` settings.
-3. Adjust margins to your university's requirements.
+## Troubleshooting
 
----
+**"Undefined control sequence" or font errors.** Compile with LuaLaTeX, not pdfLaTeX.
 
-## 📋 Quick Reference Files
+**The bibliography is empty or shows `[?]`.** Biber has not run. Use `latexmk`, or follow the four steps above.
+Also check that the key in `\cite{}` exists in `references.bib`.
 
-| File | What it contains |
-|---|---|
-| **`Codici_TESTO.txt`** | Copy-paste snippets for figures, tables, equations, subfigures, chemical formulas, units, lists, cross-references, and more. |
-| **`COME_CITARE.txt`** | Complete guide to citation commands (`\cite`, `\parencite`, `\textcite`, etc.) with examples, plus how to structure `.bib` entries. |
+**A package is missing.** With TeX Live install `texlive-full`; with MiKTeX allow automatic installation of missing
+packages.
 
-**Tip:** Keep these files open in a separate tab while you write. They save you from constantly Googling "how do I do X in LaTeX".
+**More languages.** Add them in the `babel` line of `package_thesis.tex` (the last one is the document language).
 
----
+**List of abbreviations or glossary.** Load the `glossaries` package; the
+[Overleaf guide](https://www.overleaf.com/learn/latex/Glossaries) explains it well.
 
-## ⚙️ Customisation Guide
+## Contributing
 
-### Packages and settings
+Corrections, new examples and compatibility fixes are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
+If you used the template for your thesis, I would be glad to hear about it.
 
-Everything is in `Other_Package/package_thesis.tex`, organised in numbered sections:
+## License and author
 
-1. **Spacing and titles** — line spacing, heading format
-2. **Fonts and language** — encoding, Babel languages
-3. **Page layout** — headers, footers, page numbers
-4. **Maths and chemistry** — amsmath, chemformula, siunitx
-5. **Figures and tables** — graphicx, booktabs, subfig, landscape
-6. **Typography** — microtype, indentation, colours
-7. **Code listings** — syntax highlighting
-8. **Cross-references** — hyperlinks, bookmarks
-9. **Lists** — enumitem configuration
-10. **Bibliography** — biblatex/Biber setup
-11. **Custom commands** — shortcuts and abbreviations
-12. **Abstract environment** — decorative abstract block
+Released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): use it, change it, share it, also commercially,
+as long as you give credit.
 
-Each section has comments explaining what every package and setting does, so you can turn things on/off and understand the consequences.
+Francesco Santoro De Vico, geologist, University of Padova ([fsdv.eu](https://fsdv.eu)).
 
-### Adding or removing chapters
-
-Open `maintext_thesis.tex` and add/remove `\chapter` + `\input` lines. Create the corresponding `.tex` file in `chapters/`.
-
-### Adding a cover page
-
-1. Place your cover PDF in `Figures/Covers/`.
-2. Uncomment the `\includepdf` lines at the top of `maintext_thesis.tex`.
-
----
-
-## 🤔 FAQ / Troubleshooting
-
-**Q: I get "undefined control sequence" errors.**
-A: Make sure you compile with **LuaLaTeX** (not pdfLaTeX). Some packages in this template require it.
-
-**Q: My bibliography doesn't appear.**
-A: You need to run Biber between LuaLaTeX passes. Use `latexmk` to automate this, or run the four-step compilation manually.
-
-**Q: Can I use this on Overleaf?**
-A: Yes! Upload all the files, set the compiler to **LuaLaTeX** in the project settings (Menu → Compiler), and it should compile directly.
-
-**Q: I only need 5 chapters, not 8.**
-A: Just comment out or delete the extra `\chapter` / `\input` lines in `maintext_thesis.tex`. The template adapts automatically.
-
-**Q: How do I add a List of Abbreviations or Glossary?**
-A: Add the `glossaries` package in `package_thesis.tex` and create a glossary file. There are excellent guides on the [Overleaf documentation](https://www.overleaf.com/learn/latex/Glossaries).
-
----
-
-## 📜 License
-
-This template is released under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0). You are free to use, modify, and distribute it, even for commercial purposes, as long as you give appropriate credit.
-
----
-
-## 👤 Author
-
-**Francesco Santoro De Vico**
-Geologist · Research Fellow · University of Padova
-
-This template was created from the practical experience of setting up a LaTeX environment for a PhD thesis in Earth Sciences. It is shared publicly so that students and colleagues don't have to spend the same amount of time to reach a good starting point.
-
-If you find it useful, a star on the repository is always appreciated. If you have suggestions or improvements, feel free to open an issue or a pull request.
-
----
-
-## 🙏 Acknowledgements
-
-Built with LaTeX and the extraordinary work of the open-source community that maintains all the packages used here. Special thanks to the developers of `biblatex`, `booktabs`, `siunitx`, `chemformula`, `titlesec`, and all the other packages that make scientific writing in LaTeX possible.
+If it saved you some time, a star on the repository helps other students find it.

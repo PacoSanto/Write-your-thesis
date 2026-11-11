@@ -32,7 +32,7 @@
 \end{figure}
 
 % Cross-reference a figure in the text:
-\figref{LABEL}          % produces "Fig. X" (via refstyle)
+\figref{LABEL}          % produces "figure X" (via refstyle, lowercase)
 % or the standard LaTeX way:
 Figure~\ref{fig:LABEL}
 

@@ -40,13 +40,15 @@
 \maketitle
 
 % --- Abstract ---
-% Uncomment and provide the appropriate chapter file.
-%\chapter*{Abstract}
+% Uncomment to include it. The abstract environment (defined in
+% package_thesis.tex) prints its own "Abstract" title.
+%\cleardoublepage
 %\input{chapters/Abstract}
 
 % --- Abstract in a second language (e.g., Spanish) ---
+%\cleardoublepage
 %\chapter*{Resumen}
-%\input{chapters/AResumen}
+%\input{chapters/Resumen}
 
 % --- Table of Contents ---
 \tableofcontents
@@ -88,7 +90,10 @@
 
 % --- Conclusions ---
 % The asterisk (*) removes the chapter number from the title.
+% The two lines below add it to the table of contents and fix the running header.
 \chapter*{Conclusions and Future Perspectives}\label{chapter:Con}
+\addcontentsline{toc}{chapter}{Conclusions and Future Perspectives}
+\markboth{Conclusions and Future Perspectives}{Conclusions and Future Perspectives}
 \input{chapters/CAP8}
 
 % ============================================================
